@@ -4,97 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Post - Blog CMS</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs5.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="d-flex">
-        <!-- Navigation Bar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light w-100 border-bottom">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="index.html">
-                    <i class="fas fa-feather-alt"></i> Blog CMS
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Dashboard</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle active" href="#" id="contentDropdown" role="button" data-bs-toggle="dropdown">
-                                Content
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="contentDropdown">
-                                <li><a class="dropdown-item" href="#">Posts</a></li>
-                                <li><a class="dropdown-item" href="#">Pages</a></li>
-                                <li><a class="dropdown-item" href="#">Projects</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="settings.html">Settings</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Users</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <button class="btn btn-outline-primary dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user"></i> adrian-johnson
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                                <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user-circle me-2"></i>Profile</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="login.html"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container-fluid" style="display: flex; justify-content: space-between; align-items: center;">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-feather-alt"></i> Blog CMS
+            </a>
+            <div class="d-flex" style="align-items: center; gap: 20px;">
+                <a href="index.html" class="nav-link">Dashboard</a>
+                <div style="position: relative; display: inline-block;">
+                    <a href="#" class="nav-link" style="cursor: pointer; color: #0a66c2;" onclick="event.preventDefault(); document.getElementById('contentMenu').style.display = document.getElementById('contentMenu').style.display === 'block' ? 'none' : 'block';">Content <i class="fas fa-chevron-down" style="font-size: 0.7rem; margin-left: 4px;"></i></a>
+                    <div id="contentMenu" class="dropdown-menu" style="display: none; position: absolute; top: 100%; left: 0; min-width: 150px;">
+                        <a href="#" class="dropdown-item">Posts</a>
+                        <a href="#" class="dropdown-item">Pages</a>
+                        <a href="#" class="dropdown-item">Projects</a>
+                    </div>
+                </div>
+                <a href="settings.html" class="nav-link">Settings</a>
+                <a href="#" class="nav-link">Users</a>
+                <div style="position: relative; display: inline-block; margin-left: 20px;">
+                    <button class="btn btn-outline-primary" style="font-size: 0.9rem; padding: 8px 14px;" onclick="document.getElementById('userMenu').style.display = document.getElementById('userMenu').style.display === 'block' ? 'none' : 'block';">
+                        <i class="fas fa-user"></i> adrian-johnson <i class="fas fa-chevron-down" style="font-size: 0.7rem; margin-left: 6px;"></i>
+                    </button>
+                    <div id="userMenu" class="dropdown-menu" style="display: none; position: absolute; top: 100%; right: 0; min-width: 150px;">
+                        <a href="profile.html" class="dropdown-item"><i class="fas fa-user-circle"></i> Profile</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="login.html" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
                 </div>
             </div>
-        </nav>
-    </div>
+        </div>
+    </nav>
 
     <div class="main-content">
-        <div class="container-fluid py-4">
-            <h1 class="h3 mb-4">Edit Post</h1>
+        <div class="container-fluid">
+            <h1>Edit Post</h1>
 
             <form>
                 <div class="row">
                     <!-- Left Column - Editor -->
                     <div class="col-lg-8">
-                        <div class="card mb-4">
-                            <div class="card-header bg-white border-bottom">
-                                <h5 class="mb-0">Content</h5>
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Content</h5>
                             </div>
                             <div class="card-body">
-                                <div id="summernote" class="summernote"></div>
+                                <div id="summernote"></div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Right Column - Options -->
                     <div class="col-lg-4">
-                        <div class="card mb-3">
-                            <div class="card-header bg-white border-bottom">
-                                <h5 class="mb-0">Post Options</h5>
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Post Options</h5>
                             </div>
                             <div class="card-body">
                                 <div class="mb-3">
                                     <label for="postTitle" class="form-label">Title</label>
-                                    <input type="text" class="form-control" id="postTitle" placeholder="Post title" value="Getting Started with React Hooks">
+                                    <input type="text" class="form-control" id="postTitle" value="Getting Started with React Hooks">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="postDescription" class="form-label">Description</label>
-                                    <textarea class="form-control" id="postDescription" rows="3" placeholder="Short description">Learn how to use React Hooks to manage state and side effects in your functional components.</textarea>
+                                    <textarea class="form-control" id="postDescription" rows="3">Learn how to use React Hooks to manage state and side effects in your functional components.</textarea>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="postSlug" class="form-label">Slug</label>
-                                    <input type="text" class="form-control" id="postSlug" placeholder="post-slug" value="getting-started-react-hooks">
+                                    <input type="text" class="form-control" id="postSlug" value="getting-started-react-hooks">
                                 </div>
 
                                 <div class="mb-3">
@@ -104,9 +88,9 @@
 
                                 <div class="mb-3">
                                     <label for="postIcon" class="form-label">Icon</label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" id="postIcon" placeholder="fa-react" value="fa-react">
-                                        <span class="input-group-text"><i class="fab fa-react"></i></span>
+                                    <div style="display: flex; gap: 8px;">
+                                        <input type="text" class="form-control" id="postIcon" placeholder="fa-react" value="fa-react" style="flex: 1;">
+                                        <span class="form-control" style="flex: 0 0 auto; display: flex; align-items: center; background: var(--surface-alt); border: 1px solid var(--line);"><i class="fab fa-react"></i></span>
                                     </div>
                                     <small class="text-muted">Font Awesome icon class</small>
                                 </div>
@@ -122,7 +106,7 @@
                 </div>
 
                 <!-- Footer Buttons -->
-                <div class="d-flex gap-2 justify-content-end mb-4">
+                <div class="d-flex gap-2 justify-content-end mb-4" style="margin-top: 20px;">
                     <a href="index.html" class="btn btn-secondary">Cancel</a>
                     <button type="submit" class="btn btn-primary">Save Post</button>
                 </div>
@@ -130,7 +114,6 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs5.min.js"></script>
     <script>
@@ -150,6 +133,14 @@
                     ['view', ['fullscreen', 'codeview', 'help']]
                 ]
             });
+        });
+        
+        window.addEventListener('click', function(event) {
+            if (!event.target.matches('button')) {
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    if (menu.style.display === 'block') menu.style.display = 'none';
+                });
+            }
         });
     </script>
 </body>
